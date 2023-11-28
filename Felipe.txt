@@ -1,0 +1,2 @@
+Ahi te dejo los servicios, controladores y repositorios que faltaban, no corregio lo que no llegaste a hacer eso te lo dejo a vos jaja
+y perdoname por ponerle nombres tan largos a las funciones me quedo un trauma del colorado que nos decia siempre que le pongamos el nombre de lo que hacia jaja.
