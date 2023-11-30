@@ -19,14 +19,17 @@ public interface GastoRepository extends CrudRepository<Gasto,Integer> {
     List<Gasto> findGastoByMes(@Param("fechaInicioMes") Date fechaInicioMes);
 
     //Separacion por legibilidad
+
     @Query("SELECT g FROM Gasto g WHERE g.proveedor = :proveedor AND DATE(g.fecha) = DATE(:fecha)")
     List<Gasto> findByGastoProveedorAndFecha(@Param("proveedor") Proovedor proovedor, @Param("fecha") Date fecha);
 
     //Separacion por legibilidad
+
     @Query("SELECT g FROM Gasto g WHERE g.fecha BETWEEN :fechaInicio AND :fechaFin")
     List<Gasto> findGastosEntreFechas(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
 
     //Separacion por legibilidad
+
     @Query("SELECT g FROM Gasto g WHERE g.proveedor = :proveedor")
     List<Gasto> findGastosByProveedor(@Param("proveedor") Proovedor proovedor);
 }

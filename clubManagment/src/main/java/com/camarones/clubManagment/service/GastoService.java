@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -22,11 +23,11 @@ public class GastoService {
     @Autowired
     private final GastoRepository gr;
 
-    private List<Gasto> gastos;
+    private List<Gasto> gastos; // Esta lista esta sirve para no tener que instanciar tantas listas dentro de las funciones internamente
 
     public GastoService(GastoRepository gr){
         this.gr = gr;
-        this.gastos = new ArrayList<Gasto>();
+        this.gastos = new ArrayList<>();
     }
 
     public ResponseEntity<List<Gasto>> getAll(){
@@ -88,6 +89,10 @@ public class GastoService {
     }
 
     public ResponseEntity<List<Gasto>> ObtenerGastoXFecha(Date fecha){
+        /*
+        Esta funcion recibe como parametro una fecha y retorna los gastos realizados
+        en tal fecha.
+         */
         try{
             this.gastos = vaciarLista();
             this.gastos = gr.findGastoByFecha(fecha);
@@ -103,9 +108,9 @@ public class GastoService {
 
     public ResponseEntity<List<Gasto>> ObtenerGastoXMes(String mes){
         /*
-        Bien lo que tenia planeado en esta funcion es que marquen el mes y al recibir
-        un mes por parametro vamos a determinarle una fecha y darle los gastos de ese mes
-         la logica que vo a aplicar deberia de ser correcta
+            Esta funcion recibe como parametro un mes que podria ser "enero" por ej
+            y va retornar una lista con todos los gastos registrados desde el principio al
+            fin de tal mes.
          */
         try{
             Date fechaInicioMes = ConvertirMesADate(mes);
@@ -119,8 +124,8 @@ public class GastoService {
 
     public ResponseEntity<List<Gasto>> ObtenerGastoXFechaYProovedorDeterminado(Date fecha, Proovedor proovedor){
         /*
-        Esta funcion tenia planeado que devuelva un objeto pero se me ocurrio que a un proveedor por X motivo se le podian llegar a hacer
-        2 compras distintas en un dia es poco problable pero prefiero preevenir.
+           Esta funcion recibe como parametros una fecha y proveedor determinado retornando
+           una lista con todos los gastos asociados a tal proveedor determinados en esa fecha.
          */
         try{
             this.gastos = vaciarLista();
@@ -136,6 +141,10 @@ public class GastoService {
     }
 
     public ResponseEntity<List<Gasto>> ObtenerGastosEntreFechas(Date fechaInicial, Date fechaFinal){
+        /*
+        Esta funcion recibe como parametro 2 fechas una de inicio y otra de finalizacion y
+        se encarga de retornar todos los gastos realizados entre esas 2 fechas.
+         */
         try{
             this.gastos = vaciarLista();
             this.gastos = gr.findGastosEntreFechas(fechaInicial, fechaFinal);
@@ -150,7 +159,10 @@ public class GastoService {
     }
 
     public ResponseEntity<List<Gasto>> ObtenerGastosTotalesPorProovedor(Proovedor proovedor){
-
+        /*
+        Esta funcion recibe un proveedor como parametro y retornanara todos los gastos
+        relacionados a ese proveedor.
+         */
         try{
             this.gastos = vaciarLista();
             this.gastos = gr.findGastosByProveedor(proovedor);
@@ -164,21 +176,25 @@ public class GastoService {
         }
     }
 
-    private Date ConvertirMesADate(String mes){
-        /*
-        En teoria esto deberia de funcionar. ojala
-         */
-        try{
-            SimpleDateFormat sdf = new SimpleDateFormat("MMMM");
-            Date fecha = sdf.parse(mes);
+    private static Date ConvertirMesADate(String mes) {
+        try {
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            SimpleDateFormat formatoEntrada = new SimpleDateFormat("MMMM");
+            Date fecha = formatoEntrada.parse(mes);
+            calendar.setTime(fecha);
+            calendar.set(Calendar.YEAR, year);
+            fecha = calendar.getTime();
             return fecha;
-        }
-        catch (ParseException p){
-            throw  new IllegalArgumentException("formato de mes no valido" + mes);
+        } catch (ParseException p) {
+            throw new IllegalArgumentException("Formato de mes no válido: " + mes);
         }
     }
 
     private List<Gasto> vaciarLista(){
+        /*
+        Esta funcion se encarga de vaciar la lista o retornarla si ya esta vacia.
+         */
         if(this.gastos.isEmpty()){
             return this.gastos;
         }

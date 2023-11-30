@@ -1,8 +1,6 @@
 package com.camarones.clubManagment.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -25,6 +23,7 @@ public class Cuota {
 
     private double precioCuota;
 
-    @ManyToMany(mappedBy = "cuota")
-    private List<Socio> socios;
+    @ManyToOne
+    @JoinColumn(name = "socio_id")
+    private Socio socio;
 }

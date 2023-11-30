@@ -78,6 +78,10 @@ public class SocioService {
         }
     }
     public ResponseEntity AplicarDescuentoCuota(Socio socio, int id){
+        /*
+        Este metodo recibe como parametro un socio y un id, para asi ubicarlo en la base de datos
+        y poder aplicarle su respectivo descuento a las cuotas.
+         */
         try{
             if (socio.getDescuentoCuota() > 0 && socio.getDescuentoCuota() <= 100){
                 if (sr.existsById(id)){
@@ -94,7 +98,10 @@ public class SocioService {
         }
     }
     public ResponseEntity<List<Socio>> BuscarSocioPorCategoria(String categoria){
-
+        /*
+        Este metodo recibe como parametro una categoria y retorna una lista con los socios dependiendo de
+        la categoria seleccionada
+         */
         try{
             List<Socio> socios =  sr.BuscarSocioPorCategoria(categoria);
             if(socios.isEmpty()){

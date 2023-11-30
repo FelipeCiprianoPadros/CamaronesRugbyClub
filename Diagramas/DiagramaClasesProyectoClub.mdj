@@ -563,7 +563,7 @@
 											"top": 481,
 											"width": 172.71337890625,
 											"height": 13,
-											"text": "-socios: List<Socio>",
+											"text": "-socio: Socio",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3138,7 +3138,7 @@
 										"$ref": "AAAAAAGL+B2o91OzTv4="
 									},
 									"edgePosition": 1,
-									"text": "+Many to many"
+									"text": "+One  to many"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -3244,7 +3244,7 @@
 										"$ref": "AAAAAAGL+B2o91OzTv4="
 									},
 									"edgePosition": 2,
-									"text": "1..*"
+									"text": "1"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -10434,6 +10434,35 @@
 							"width": 265,
 							"height": 77,
 							"text": "Actualize el diagrama con todos lo cambios que le hice, se ve como esta implementado el codigo, si ves algun error corregilo o si agregas algo al codigo agregalo aca tambien porfavor"
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAGMG+5EhyiXEOE=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"fillColor": "#ffd8d8",
+							"font": "Arial;13;0",
+							"left": 384,
+							"top": 536,
+							"width": 185,
+							"height": 77,
+							"text": "Realize el cambio a la relacion entre socio y cuota, muy buena obsevacion por tu parte si no habriamos tenido muchos problemas"
+						},
+						{
+							"_type": "UMLNoteLinkView",
+							"_id": "AAAAAAGMG+7zNTwnQBI=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAGL+B2o91OzTv4="
+							},
+							"tail": {
+								"$ref": "AAAAAAGMG+5EhyiXEOE="
+							},
+							"points": "569:576;636:576;636:425"
 						}
 					]
 				},
@@ -10480,7 +10509,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGL96+OVJbIz8I="
 							},
-							"name": "Many to many",
+							"name": "One  to many",
 							"end1": {
 								"_type": "UMLAssociationEnd",
 								"_id": "AAAAAAGL+B2o91OwQ7U=",
@@ -10490,7 +10519,7 @@
 								"reference": {
 									"$ref": "AAAAAAGL96+OVJbIz8I="
 								},
-								"multiplicity": "1..*"
+								"multiplicity": "1"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -10713,9 +10742,11 @@
 							"_parent": {
 								"$ref": "AAAAAAGL97GmDJceT9Q="
 							},
-							"name": "socios",
+							"name": "socio",
 							"visibility": "private",
-							"type": "List<Socio>"
+							"type": {
+								"$ref": "AAAAAAGL96+OVJbIz8I="
+							}
 						}
 					]
 				},
@@ -12284,7 +12315,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGMApcxKUowMfs="
 									},
-									"name": "int id"
+									"name": "int id",
+									"type": ""
 								}
 							]
 						},
@@ -12302,7 +12334,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGMApeB70vp/L8="
 									},
-									"name": "Date fecha"
+									"name": "Date fecha",
+									"type": ""
 								}
 							]
 						},
@@ -12592,7 +12625,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGMDBzpfEetZeA="
 									},
-									"name": "fecha"
+									"name": "fecha",
+									"type": ""
 								}
 							]
 						},
@@ -12844,7 +12878,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGMApyswNsKcN0="
 									},
-									"name": "int id"
+									"name": "int id",
+									"type": ""
 								}
 							]
 						},
@@ -12862,7 +12897,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGMApzg5N67JJc="
 									},
-									"name": "Date fecha"
+									"name": "Date fecha",
+									"type": ""
 								}
 							]
 						},
@@ -12880,7 +12916,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGMFuCLeb5qhSQ="
 									},
-									"name": "String mes"
+									"name": "String mes",
+									"type": ""
 								}
 							]
 						},
@@ -12898,7 +12935,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGMFwZ6TH+reuA="
 									},
-									"name": "Date fecha"
+									"name": "Date fecha",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -12906,7 +12944,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGMFwZ6TH+reuA="
 									},
-									"name": "Proovedor proveedor"
+									"name": "Proovedor proveedor",
+									"type": ""
 								}
 							]
 						},
