@@ -1,8 +1,8 @@
 package com.camarones.clubManagment.service;
 
-import MediatorPackage.ConcreteMediator;
-import MediatorPackage.Mediator;
+import com.camarones.clubManagment.MediatorPackage.Mediator;
 import com.camarones.clubManagment.model.Cuota;
+import com.camarones.clubManagment.model.Socio;
 import com.camarones.clubManagment.repository.CuotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -87,5 +88,35 @@ public class CuotaService {
             throw new Exception("Ocurrio un error al aplicar el recargo");
         }
     }
-
+    @Scheduled(cron = "0 0 0 1 * ?") // Asignada para que pase a las 00:00 del 1 de cada mes
+    public void AsignarCuotaAsocios(List<Socio> socios, String mes){ // No estoy seguro de que deba de ser publico este metodo
+        /*
+        Este metodo se encarga de asignarle las cuotas de cada mes a todos los socios.
+         */
+        try{
+            if(!socios.isEmpty()){
+                // Primero verifico que el listado de socios que este recibiendo no este vacio
+                for (Socio socio: socios){
+                    // Luego itero sobre ada socio
+                    LocalDate fechaActual = LocalDate.now();
+                    int añoActual = fechaActual.getYear();
+                    int mesActual = fechaActual.getMonthValue();
+                    LocalDate fecha = LocalDate.of(añoActual, mesActual, 10);
+                    Date fechaVencimiento = Date.valueOf(fecha);
+                    // Lineas 100, 101, 102, 103, 104 son para obtener la fecha de vencimiento, el 10 de cada mes
+                    Cuota cuotaNueva = new Cuota(null,mes,fechaVencimiento,false,000,socio); // el precio lo puse al azar, habria que ver como asignar el precio.
+                    /*
+                    Creo una nueva cuota, fijate que estoy iterando sobre la lista de socios que obtengo de su metodo getAll()
+                    es decir que todos los socios por los que voy pasando ya existen en la base de datos.
+                     */
+                    cr.save(cuotaNueva); // Guardo la cuota en la base de datos
+                }
+            }else{
+                System.out.print("mensaje"); // Deberiamos de ver que hacemos en caso de que la lista de socios este vacia por algun motivo.
+            }
+        }
+        catch (Exception e){
+            System.out.print("mensaje"); // Aca lo mismo deberiamos de arrojar una excepcion en caso de error.
+        }
+    }
 }

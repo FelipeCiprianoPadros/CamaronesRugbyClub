@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -13,11 +14,12 @@ import java.util.List;
 public class Cuota {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String mesCuota;
 
-    private LocalDate fechaVencimiento;
+    private Date fechaVencimiento;
 
     private boolean pagada;
 
@@ -26,4 +28,6 @@ public class Cuota {
     @ManyToOne
     @JoinColumn(name = "socio_id")
     private Socio socio;
+
+
 }

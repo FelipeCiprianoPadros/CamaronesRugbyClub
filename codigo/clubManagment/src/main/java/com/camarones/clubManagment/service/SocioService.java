@@ -1,12 +1,10 @@
 package com.camarones.clubManagment.service;
 
 
-import MediatorPackage.Mediator;
+import com.camarones.clubManagment.MediatorPackage.Mediator;
 import com.camarones.clubManagment.model.Cuota;
 import com.camarones.clubManagment.model.Socio;
 import com.camarones.clubManagment.repository.SocioRepository;
-import jakarta.persistence.EntityNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -144,7 +142,8 @@ public class SocioService {
             return new ResponseEntity<>(INTERNAL_SERVER_ERROR);
         }
     }
-    private String ObtenerMesActual(){
+
+    public String ObtenerMesActual(){
         /*
         Este metodo se encarga de obtener el mes actual en formato string por ej: "diciembre"
          */
