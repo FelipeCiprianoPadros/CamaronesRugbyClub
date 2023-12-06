@@ -1,10 +1,13 @@
 package com.camarones.clubManagment.service;
 
+import MediatorPackage.ConcreteMediator;
+import MediatorPackage.Mediator;
 import com.camarones.clubManagment.model.Cuota;
 import com.camarones.clubManagment.repository.CuotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,11 +19,12 @@ import static org.springframework.http.HttpStatus.*;
 @Service
 public class CuotaService {
 
-    @Autowired
     private final CuotaRepository cr;
-
-    public CuotaService(CuotaRepository cr){
+    private final Mediator mediator;
+    @Autowired // Deje la notacion aca para facilitarte el testing
+    public CuotaService(CuotaRepository cr, Mediator mediator){
         this.cr = cr;
+        this.mediator = mediator;
     }
 
     public ResponseEntity<List<Cuota>> getAll(){
@@ -74,12 +78,13 @@ public class CuotaService {
         }
     }
 
-    public void AplicarRecargoCuota(){
+    @Scheduled(cron = "0 0 0 10 * ?") // esto supuestamente te ejecuta automaticamente las funciones.
+    public void AplicarRecargoCuota() throws Exception {
         try{
             cr.AplicarRecargoCuotasVencidas();
         }
         catch (Exception e){
-            // aca deberiamos de agregar algo
+            throw new Exception("Ocurrio un error al aplicar el recargo");
         }
     }
 
