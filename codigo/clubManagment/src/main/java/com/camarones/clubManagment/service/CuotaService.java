@@ -104,7 +104,7 @@ public class CuotaService {
                     LocalDate fecha = LocalDate.of(añoActual, mesActual, 10);
                     Date fechaVencimiento = Date.valueOf(fecha);
                     // Lineas 100, 101, 102, 103, 104 son para obtener la fecha de vencimiento, el 10 de cada mes
-                    Cuota cuotaNueva = new Cuota(null,mes,fechaVencimiento,false,000,socio); // el precio lo puse al azar, habria que ver como asignar el precio.
+                    Cuota cuotaNueva = new Cuota(null,mes,fechaVencimiento,false,000,socio); // tendriamos que ver como dejar un valor fijo a menos de que se modifique.
                     /*
                     Creo una nueva cuota, fijate que estoy iterando sobre la lista de socios que obtengo de su metodo getAll()
                     es decir que todos los socios por los que voy pasando ya existen en la base de datos.
@@ -115,7 +115,7 @@ public class CuotaService {
                 System.out.print("mensaje"); // Deberiamos de ver que hacemos en caso de que la lista de socios este vacia por algun motivo.
             }
         }
-        catch (Exception e){
+        catch (Exception e){// primero fijarse si esto se printea en el front porque es un print de consola
             System.out.print("mensaje"); // Aca lo mismo deberiamos de arrojar una excepcion en caso de error.
         }
     }
