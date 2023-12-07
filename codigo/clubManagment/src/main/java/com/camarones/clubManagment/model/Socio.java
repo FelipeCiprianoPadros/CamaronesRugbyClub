@@ -2,6 +2,10 @@ package com.camarones.clubManagment.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+<<<<<<< Updated upstream
+=======
+import jakarta.persistence.ManyToMany;
+>>>>>>> Stashed changes
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
