@@ -4,6 +4,7 @@ import com.camarones.clubManagment.MediatorPackage.Mediator;
 import com.camarones.clubManagment.model.Cuota;
 import com.camarones.clubManagment.model.Socio;
 import com.camarones.clubManagment.repository.CuotaRepository;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
@@ -29,9 +31,9 @@ public class CuotaService {
     }
 
     public ResponseEntity<List<Cuota>> getAll(){
-        List listaCuotas = new ArrayList<Cuota>();
+        List<Cuota> listaCuotas = new ArrayList<>();
         try{
-            listaCuotas.add(cr.findAll());
+            listaCuotas.addAll((Collection) cr.findAll());
             return new ResponseEntity<>(listaCuotas, HttpStatus.OK);
         }
         catch(Exception e){
@@ -40,12 +42,18 @@ public class CuotaService {
     }
     public ResponseEntity SaveCuota(Cuota cuota){
         try{
-            cr.save(cuota);
-            return ResponseEntity.status(CREATED).build();
-        }
-        catch (Exception e){
-            return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
-        }
+            Cuota cuotaGuardada = cr.save(cuota);
+            if (cuotaGuardada != null){
+                // Es muy raro que devuelva null pero no me cierro a la posibilidad.
+                return ResponseEntity.status(CREATED).build();
+            }
+            else{
+                return ResponseEntity.status(BAD_REQUEST).build();
+                }
+            }
+            catch (Exception e){
+                return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
+            }
     }
 
     public ResponseEntity UpdateCuota (int id, Cuota cuota){
