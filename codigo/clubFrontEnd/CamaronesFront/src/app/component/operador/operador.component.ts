@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 @Component({
     selector:'app-operador',
     templateUrl:'./operador.component.html',
-    styles:['./operador.component.css']
+    styles:['.operador.component.css{}']
 })
 export class OperadorComponent{
     
