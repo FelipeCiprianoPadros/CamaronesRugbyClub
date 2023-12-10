@@ -1,0 +1,7 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rethink Sans', system-ui; 
+    font-size: 30px;
+    background: linear-gradient(to right, #FF8473, #FFF9D2); /* Degradado para el fondo de toda la página */
+  }
