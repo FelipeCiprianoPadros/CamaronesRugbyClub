@@ -1,0 +1,62 @@
+
+.container {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif; 
+  font-size: 30px;
+  background: linear-gradient(to right, #FF8473, #FFF9D2); /* Degradado para el fondo de toda la página */
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  color: #333;
+  margin: 0;
+}
+
+.taskbar {
+  padding: 10px 0;
+  width: 100%;
+}
+.taskbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.taskbar li {
+  margin-right: 200px; /* Espacio entre elementos */
+}
+
+.taskbar a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 8px 16px;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.taskbar a:hover {
+  background: linear-gradient(to right, #FF8473, #FFF9D2); /* Cambia el fondo al pasar el ratón */
+  color: #333; /* Cambia el color del texto al pasar el ratón */
+  border-color: #333; /* Cambia el color del borde al pasar el ratón */
+}
+
+.taskbar a.active {
+  background: linear-gradient(to right, #FF8473, #FFF9D2); /* Color de fondo para el botón activo */
+  color: #333; /* Color del texto para el botón activo */
+  border-color: #333; /* Color del borde para el botón activo */
+}
