@@ -26,12 +26,12 @@ public class OperadorController {
         return os.SaveOperador(operador);
     }
 
-    @PostMapping("/{id}/update")
+    @PutMapping("/{id}/actualizar")
     public ResponseEntity UpdateSocio(@PathVariable int id,@RequestBody Operador operador){
         return os.UpdateOperador(id,operador);
     }
 
-    @PostMapping("/{id}/delete")
+    @PostMapping("/{id}/eliminar")
     public ResponseEntity DeleteOperador(@PathVariable int id){
         return os.DeleteOperador(id);
     }

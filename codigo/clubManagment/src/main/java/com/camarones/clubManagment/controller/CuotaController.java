@@ -17,22 +17,27 @@ public class CuotaController {
     private CuotaService cs;
 
     @GetMapping("")
-    public List<Cuota> GetAll(){
-       return (List<Cuota>) cs.getAll();
+    public List<Cuota> GetAll() {
+        return (List<Cuota>) cs.getAll();
     }
+
     @PostMapping("")
-    public ResponseEntity SaveCuota(@RequestBody Cuota cuota){
+    public ResponseEntity SaveCuota(@RequestBody Cuota cuota) {
         return cs.SaveCuota(cuota);
     }
 
-    @PostMapping("/{id}/update")
-    public ResponseEntity UpdateCuota(@PathVariable int id,@RequestBody Cuota cuota){
-        return cs.UpdateCuota(id,cuota);
+    @PutMapping("/{id}/actualizar")
+    public ResponseEntity UpdateCuota(@PathVariable int id, @RequestBody Cuota cuota) {
+        return cs.UpdateCuota(id, cuota);
     }
 
-    @PostMapping("/{id}/delete")
-    public ResponseEntity DeleteCuota(@PathVariable int id){
+    @PostMapping("/{id}/eliminar")
+    public ResponseEntity DeleteCuota(@PathVariable int id) {
         return cs.DeleteCuota(id);
     }
 
+    @PostMapping("")
+    public ResponseEntity pagarCuota(@RequestBody Cuota cuota, @RequestParam double monto) {
+        return cs.PagarCuota(cuota, monto);
+    }
 }

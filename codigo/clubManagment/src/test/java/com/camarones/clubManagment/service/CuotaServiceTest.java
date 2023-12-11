@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -154,7 +155,16 @@ class CuotaServiceTest {
     }
 
     @Test
-    void aplicarRecargoCuota() {
+    void aplicarRecargoCuotaExitoso()throws Exception {
+        Mockito.doNothing().when(cuotaService).AplicarRecargoCuota();
+
+        cuotaService.AplicarRecargoCuota();
+
+        Mockito.verify(cuotaService, Mockito.times(1)).AplicarRecargoCuota();
+    }
+    @Test
+    void aplicarRecargoCuotaFallido(){
+
     }
 
     @Test

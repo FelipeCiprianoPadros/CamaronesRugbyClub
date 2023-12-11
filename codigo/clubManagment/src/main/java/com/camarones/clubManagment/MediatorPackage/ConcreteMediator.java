@@ -26,7 +26,7 @@ public class ConcreteMediator implements Mediator{
     }
 
     @Override
-    public void ComunicarParaobtenerSocios() {
+    public void ComunicarParaobtenerSocios(){
         List socios = (List) socioService.getAll();
         cuotaService.AsignarCuotaAsocios(socios, socioService.ObtenerMesActual());
     }

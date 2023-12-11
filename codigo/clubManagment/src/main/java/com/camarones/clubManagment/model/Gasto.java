@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
+import java.sql.Date;
+
 
 @Data
 @AllArgsConstructor
@@ -15,10 +17,15 @@ public class Gasto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotNull
     private String nombreGasto;
-    private LocalDate fecha;
+    @NotNull
+    private Date fecha;
+    @NotNull
     private double montoGasto;
+    @NotNull
     private String metodoPago;
+    @NotNull
     private String detalleGasto;
     @ManyToOne
     @JoinColumn(name ="proveedor_id")

@@ -3,9 +3,9 @@ package com.camarones.clubManagment.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -16,15 +16,16 @@ public class Cuota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    @NotNull
     private String mesCuota;
-
+    @NotNull
     private Date fechaVencimiento;
-
+    @NotNull
     private boolean pagada;
-
+    @NotNull
     private double precioCuota;
-
+    @NotNull
+    private double cantidadPagada;
     @ManyToOne
     @JoinColumn(name = "socio_id")
     private Socio socio;

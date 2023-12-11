@@ -21,21 +21,25 @@ public class SocioController {
     public List<Socio> GetAll(){
         return (List<Socio>) ss.getAll();
     }
+    @GetMapping("/{diciplina}")
+    public List<Socio> getAllByDicipilna(@PathVariable String diciplina){
+        return (List<Socio>) ss.getAllByDiciplina(diciplina);
+    }
     @PostMapping("")
     public ResponseEntity SaveSocio(@RequestBody Socio socio){
         return ss.SaveSocio(socio);
     }
 
-    @PostMapping("/{id}/update")
+    @PutMapping("/{id}/actualizar")
     public ResponseEntity UpdateSocio(@PathVariable int id,@RequestBody Socio socio){
         return ss.UpdateSocio(id,socio);
     }
 
-    @PostMapping("/{id}/delete")
+    @PostMapping("/{id}/eliminar")
     public ResponseEntity DeleteSocio(@PathVariable int id){
         return ss.DeleteSocio(id);
     }
-    @PostMapping("")
+    @GetMapping("/Categoria")
     public List<Socio> BuscarSocioPorCategoria(@RequestParam String categoria){
         return (List<Socio>) ss.BuscarSocioPorCategoria(categoria);
     }

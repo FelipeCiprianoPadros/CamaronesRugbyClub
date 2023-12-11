@@ -36,6 +36,20 @@ public class SocioService {
             return new ResponseEntity<>(INTERNAL_SERVER_ERROR);
         }
     }
+
+    public ResponseEntity<List<Socio>> getAllByDiciplina(String diciplina){
+        /*
+        Este metodo se encarga de buscar socios por una diciplina, en la consulta de la base de datos
+        se encarga de pasar a minusculas todo.
+         */
+        List listaSocios = new ArrayList<Socio>();
+        try{
+            listaSocios.add(sr.buscarPorDisciplina(diciplina));
+            return new ResponseEntity<>(listaSocios, HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(INTERNAL_SERVER_ERROR);
+        }
+    }
     public ResponseEntity SaveSocio (Socio socio){
         try{
             sr.save(socio);

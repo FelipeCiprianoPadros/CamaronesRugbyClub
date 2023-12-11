@@ -24,11 +24,11 @@ public class ProovedorController{
     public ResponseEntity SaveProovedor(@RequestBody Proovedor proovedor){
         return ps.SaveProovedor(proovedor);
     }
-    @PostMapping("/{id}/update")
+    @PutMapping("/{id}/actualizar")
     public ResponseEntity UpdateProovedor(@PathVariable int id,@RequestBody Proovedor proovedor){
         return ps.UpdateProovedor(id,proovedor);
     }
-    @PostMapping("/{id}/delete")
+    @PostMapping("/{id}/eliminar")
     public ResponseEntity DeleteProovedor(@PathVariable int id){
         return ps.DeleteProovedor(id);
     }

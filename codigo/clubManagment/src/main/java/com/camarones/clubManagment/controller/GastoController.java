@@ -19,40 +19,53 @@ public class GastoController {
     private GastoService gs;
 
     @GetMapping("")
-    public List<Gasto> GetAll(){
+    public List<Gasto> getAll() {
         return (List<Gasto>) gs.getAll();
     }
+
     @PostMapping("")
-    public ResponseEntity SaveGasto(@RequestBody Gasto gasto){
+    public ResponseEntity saveGasto(@RequestBody Gasto gasto) {
         return gs.SaveGasto(gasto);
     }
-    @PostMapping("/{id}/update")
-    public ResponseEntity UpdateGasto(@PathVariable int id, @RequestBody Gasto gasto){
+
+    @PutMapping("/{id}/actualizar")
+    public ResponseEntity updateGasto(@PathVariable int id, @RequestBody Gasto gasto) {
         return gs.UpdateGasto(id, gasto);
     }
-    @PostMapping("/{id}/delete")
-    public ResponseEntity DeleteGasto(@PathVariable int id){
+
+    @DeleteMapping("/{id}/eliminar")
+    public ResponseEntity deleteGasto(@PathVariable int id) {
         return gs.DeleteGasto(id);
     }
-    @GetMapping("")
-    public ResponseEntity ObtenerGastoXFecha(@RequestParam Date fecha){
+
+    @GetMapping("/porFecha")
+    public ResponseEntity obtenerGastoXFecha(@RequestParam Date fecha) {
         return gs.ObtenerGastoXFecha(fecha);
     }
-    @GetMapping("")
-    public ResponseEntity ObtenerGastoXmes(@RequestParam String mes){
+
+    @GetMapping("/porMes")
+    public ResponseEntity obtenerGastoXMes(@RequestParam String mes) {
         return gs.ObtenerGastoXMes(mes);
     }
-    @GetMapping("")
-    public ResponseEntity ObtenerGastoXFechaYProovedorDeterminado(@RequestParam Date fecha, @RequestBody Proovedor proovedor){
-        return gs.ObtenerGastoXFechaYProovedorDeterminado(fecha, proovedor);
-    }
-    @GetMapping("")
-    public ResponseEntity ObtenerGastosEntreFechas(@RequestParam Date fechaInicio, @RequestParam Date fechafinal){
-        return gs.ObtenerGastosEntreFechas(fechaInicio,fechafinal);
-    }
-    @GetMapping("")
-    public ResponseEntity ObtenerGastosTotalesPorProovedor(@RequestBody Proovedor proovedor){
-        return gs.ObtenerGastosTotalesPorProovedor(proovedor);
+
+    @GetMapping("/porFechaYProovedor")
+    public ResponseEntity obtenerGastoXFechaYProovedorDeterminado(
+            @RequestParam Date fecha, @RequestParam Proovedor proveedor) {
+        return gs.ObtenerGastoXFechaYProovedorDeterminado(fecha, proveedor);
     }
 
+    @GetMapping("/entreFechas")
+    public ResponseEntity obtenerGastosEntreFechas(
+            @RequestParam Date fechaInicio, @RequestParam Date fechaFinal) {
+        return gs.ObtenerGastosEntreFechas(fechaInicio, fechaFinal);
+    }
+
+    @GetMapping("/totalPorProveedor")
+    public ResponseEntity obtenerGastosTotalesPorProovedor(@RequestParam Proovedor proveedor) {
+        return gs.ObtenerGastosTotalesPorProovedor(proveedor);
+    }
+    /*
+    NOTA: cambiar los parametros que reciben proveedores como parametro por sus id, o mas bien
+    revisar cual es mas conveniente
+     */
 }
