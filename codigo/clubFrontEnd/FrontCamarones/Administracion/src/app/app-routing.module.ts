@@ -1,11 +1,5 @@
 import { Routes , RouterModule } from "@angular/router";
-import { CuotaComponent } from "./component/cuota/cuota.component";
-import { OperadorComponent } from "./component/operador/operador.component";
-import { ProveedorComponent } from "./component/proveedor/proveedor.component";
-import { SocioComponent } from "./component/socio/socio.component";
 
-import { LoginComponent } from "./component/login/login.component";
-import { HomeComponent } from "./component/home/home.component";
 
 
 export const routes: Routes= [

@@ -4,22 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="home.component.css">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
   <title>Document</title>
 </head>
 <body>
-
+  <header>
   <nav class="navbar">
-    <a href="#" class="logo">Logo</a>
+    <a (click)="clearRouterOutlet()" class="logo">Logo</a>
     <div class="nav-links">
       <ul>
-        <li><a href=""></a>Socio</li>
-        <li><a href=""></a>Cuota</li>
-        <li><a href=""></a>Gasto</li>
-        <li><a href=""></a>Provedoor</li>
+        <li class="select"><a href="socio">Socio</a></li>
+        <li><a href="cuota">Cuota</a></li>
+        <li><a href="gasto">Gasto</a></li>
+        <li><a href="proveedor">Provedoor</a></li>
       </ul>
     </div>
   </nav>
-  <header></header>
-  
+  </header>
+  <div class="content-container">
+    <router-outlet></router-outlet>
+  </div>
 </body>
 </html>
