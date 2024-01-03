@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Socio } from '../../models/Socio';
+import { Socio } from '../../../models/Socio';
 import { CommonModule } from '@angular/common';
 
 @Component({

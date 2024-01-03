@@ -1,15 +1,47 @@
 import { Routes , RouterModule } from "@angular/router";
+import { HomeComponent } from "./component/pages/home/home.component";
+import { LoginComponent } from "./component/auth/login/login.component";
+import { CuotaComponent } from "./component/pages/cuota/cuota.component";
+import { GastoComponent } from "./component/pages/gasto/gasto.component";
+import { OperadorComponent } from "./component/pages/operador/operador.component";
+import { ProveedorComponent } from "./component/pages/proveedor/proveedor.component";
+import { SocioComponent } from "./component/pages/socio/socio.component";
+import { DashboardComponent } from "./component/pages/dashboard/dashboard.component";
 
 
 
 export const routes: Routes= [
-    { path: 'gasto', loadComponent: () => import('./component/gasto/gasto.component').then(m => m.GastoComponent) },
-    { path: 'cuota', loadComponent: () => import('./component/cuota/cuota.component').then(m => m.CuotaComponent) },
-    { path: 'operador', loadComponent: () => import('./component/operador/operador.component').then(m => m.OperadorComponent) },
-    { path: 'socio', loadComponent: () => import('./component/socio/socio.component').then(m => m.SocioComponent) },
-    { path: 'proveedor', loadComponent: () => import('./component/proveedor/proveedor.component').then(m => m.ProveedorComponent) },
-    { path: 'login', loadComponent: () => import('./component/login/login.component').then(m => m.LoginComponent) },
-    { path: 'home', loadComponent: () => import('./component/home/home.component').then(m => m.HomeComponent) },
-    
-    
+    {
+        path:'',
+        pathMatch:'full',
+        redirectTo:'dashboard'
+    },
+    {
+        path:'dashboard',
+        component: DashboardComponent,
+    },
+    {
+        path:'login',
+        component: LoginComponent,
+    },
+    {
+        path:'cuota',
+        component: CuotaComponent,
+    },
+    {
+        path:'gasto',
+        component: GastoComponent,
+    },
+    {
+        path:'operador',
+        component: OperadorComponent,
+    },
+    {
+        path:'proveedor',
+        component: ProveedorComponent,
+    },
+    {
+        path:'socio',
+        component: SocioComponent,
+    }
 ];
