@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css',
   standalone: true,
   imports:[
-    RouterModule
+    RouterModule,
+    LoginComponent
   ]
 })
 export class HomeComponent {

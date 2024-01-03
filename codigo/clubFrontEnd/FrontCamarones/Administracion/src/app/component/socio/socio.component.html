@@ -1,1 +1,49 @@
-<p>socio works!</p>
+<main class="py-5">
+    <section class="mb-5">
+        <form [formGroup]="form">
+            <div class="container">
+                <h3 class="mb-3">Agregar Socio</h3>
+                <div class="bg-light p-4 rounded">
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <label for="Nombre" class="form-label">Nombre: </label>
+                            <input type="text" formControlName="Nombre" class="form-control">
+                            <div *ngIf="Nombre.invalid && (Nombre.dirty || Nombre.touched)">
+                                <p *ngIf="Nombre.errors['required']" class="error-message">Campo requerido</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label for="Apellido" class="form-label">Apellido: </label>
+                            <input type="text" formControlName="Apellido" class="form-control">
+                            <div *ngIf="Apellido.invalid && (Apellido.dirty || Apellido.touched)">
+                                <p *ngIf="Apellido.errors['required']" class="error-message">Campo requerido</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label for="Contacto" class="form-label">Contacto: </label>
+                            <input type="text" formControlName="Contacto" class="form-control">
+                            <div *ngIf="Contacto.invalid && (Contacto.dirty || Contacto.touched)">
+                                <p *ngIf="Contacto.errors['required']" class="error-message">Campo requerido</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <label for="FchNacimiento" class="form-label">Fecha de Nacimiento: </label>
+                            <input type="date" formControlName="FchNacimiento" class="form-control">
+                            <div *ngIf="FchNacimiento.invalid && (FchNacimiento.dirty || FchNacimiento.touched)">
+                                <p *ngIf="FchNacimiento.errors['required']" class="error-message">Campo requerido</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+                    <button type="button" class="btn btn-primary" [disabled]="!form.valid">Agregar</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</main>

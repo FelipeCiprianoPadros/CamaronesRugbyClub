@@ -1,0 +1,41 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+
+.rounded {
+    border-radius: 10px;
+}
+
+/* Estilo para los campos del formulario */
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.error-message {
+    font-size: small;
+    color: red;
+}
+
+/* Estilo para el botón de agregar */
+.btn-primary {
+    background-color: #FF8473; /* Verde */
+    color: white;
+    border: 2px solid #FF8473;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #FFF9D2; 
+    color: black;
+}

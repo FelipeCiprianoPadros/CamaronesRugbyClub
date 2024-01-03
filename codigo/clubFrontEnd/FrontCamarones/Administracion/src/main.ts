@@ -4,7 +4,7 @@ import { LoginComponent } from './app/component/login/login.component';
 import { provideRouter } from '@angular/router';
 import{routes} from './app/app-routing.module'
 
-bootstrapApplication(LoginComponent,{
+bootstrapApplication(HomeComponent,{
     providers:[
 
     provideRouter(routes)
