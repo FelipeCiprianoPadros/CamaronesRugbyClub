@@ -1,4 +1,31 @@
 <main class="py-5">
+    <section id="listado" class="mb-5">
+        <div class="container">
+             <h2 class="mb-4">Lista Socios</h2>
+             <table class="table table-striped">
+               <thead class="thead-dark">
+                 <tr>
+                   <th scope="col">#</th>
+                   <th scope="col">Nombre</th>
+                   <th scope="col">Apellido</th>
+                   <th scope="col">Contacto</th>
+                   <th scope="col">Fecha de Nacimiento</th>
+                   <th scope="col">Delete</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr *ngFor="let socio of listaSocios">
+                   <th scope="row">{{ socio.id  }}</th>
+                   <td>{{ socio.nombre }}</td>
+                   <td>{{ socio.apellido }}</td>
+                   <td>{{ socio.contacto }}</td>
+                   <td><a class="btn btn-success btn-sm ">View Details</a></td>
+                   <td><button class="btn btn-danger btn-sm" (click)="delete(socio.id)">Delete</button></td>
+                 </tr>                  
+               </tbody>
+             </table>
+        </div>
+   </section>
     <section class="mb-5">
         <form [formGroup]="form">
             <div class="container">

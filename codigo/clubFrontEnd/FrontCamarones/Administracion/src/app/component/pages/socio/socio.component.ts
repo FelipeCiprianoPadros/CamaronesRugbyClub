@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Socio } from '../../../models/Socio';
 import { CommonModule } from '@angular/common';
+import { socioService } from '../../../services/socio.service';
 
 @Component({
   selector: 'app-socio',
@@ -12,11 +13,19 @@ import { CommonModule } from '@angular/common';
 })
 export class SocioComponent implements OnInit {
 
+  constructor(private socioService: socioService){}
+
+  listaSocios = new Array<Socio>();
+
   public form:FormGroup;
 
   socio: Socio = new Socio();
 
   ngOnInit(): void {
+    this.getAll();
+
+
+
     this.socio.nombre="";
     this.socio.apellido="";
     this.socio.contacto="";
@@ -39,7 +48,30 @@ export class SocioComponent implements OnInit {
     socio.apellido = this.Apellido.value;
     socio.contacto = this.Contacto.value;
     socio.fechaNacimiento = this.FchNacimiento.value;
+
+    this.socioService.add(socio).subscribe(()=> {
+      this.Nombre.setValue("");
+      this.Apellido.setValue("");
+      this.Contacto.setValue("");
+      this.FchNacimiento.setValue("");
+      alert("Alta Exitosa");
+      document.getElementsByTagName("input")[0].focus();
+    },error =>{
+      alert('Error: ${error.error.message}');
+      document.getElementsByTagName("input")[0].focus();
+      console.error(error)
+    }
+    
+    )
   }
   
+  getAll(){
+    this.socioService.getAll();
+  }
+
+  delete(socioId){
+    this.socioService.delete(socioId);
+
+  }
 
 }
